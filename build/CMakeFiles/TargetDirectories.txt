@@ -1,0 +1,4 @@
+/home/btw/temp_files/vs_mkr_test1/build/CMakeFiles/pch_header.dir
+/home/btw/temp_files/vs_mkr_test1/build/CMakeFiles/test_repos.dir
+/home/btw/temp_files/vs_mkr_test1/build/CMakeFiles/edit_cache.dir
+/home/btw/temp_files/vs_mkr_test1/build/CMakeFiles/rebuild_cache.dir
