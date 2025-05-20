@@ -4,8 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/qwivet/lab4it.git', 
-                     branch: 'main'
+                git branch: 'main', credentialsId: 'a7009af2-a730-4e5e-92df-6dc52c2e3977', url: 'https://github.com/qwivet/lab4it.git'
             }
         }
 
