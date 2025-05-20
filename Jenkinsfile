@@ -4,30 +4,33 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'add here your url', credentialsId: 'add credentialsId'
+                git url: 'https://github.com/your-username/your-repo.git', 
+                     credentialsId: 'github-credentials-id', 
+                     branch: 'main'
             }
         }
-        
+
         stage('Build') {
             steps {
-                // Крок для збірки проекту з Visual Studio
-                // Встановіть правильні шляхи до рішення/проекту та параметри MSBuild
-                bat '"path to MSBuild" test_repos.sln /t:Build /p:Configuration=Release'
+                sh '''
+                    mkdir -p build
+                    cd build
+                    cmake .. -DCMAKE_BUILD_TYPE=Release
+                    make
+                '''
             }
         }
 
         stage('Test') {
             steps {
-                // Команди для запуску тестів
-                bat "x64\\Debug\\test_repos.exe --gtest_output=xml:test_report.xml"
+                sh 'cd build && ./test_repos --gtest_output="xml:test_report.xml"'
             }
         }
     }
 
     post {
-    always {
-        // Publish test results using the junit step
-         // Specify the path to the XML test result files
+        always {
+            junit 'build/test_report.xml'
+        }
     }
-}
 }
