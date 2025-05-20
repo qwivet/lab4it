@@ -24,6 +24,12 @@ pipeline {
                 sh 'cd build && ./test_repos --gtest_output="xml:test_report.xml"'
             }
         }
+        
+        stage('Clean') {
+            steps {
+                sh 'rm -rf build'
+            }
+        }
     }
 
     post {
