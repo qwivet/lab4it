@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/your-username/your-repo.git', 
+                git url: 'https://github.com/qwivet/lab4it.git', 
                      branch: 'main'
             }
         }
@@ -29,7 +29,7 @@ pipeline {
 
     post {
         always {
-            junit 'build/test_report.xml'
+            junit 'test_report.xml'
         }
     }
 }
